@@ -1,0 +1,67 @@
+language: node_js
+node_js:
+  - "6.17"
+  - "4.9"
+before_install:
+  - 'nvm install-latest-npm'
+script:
+  - 'if [ -n "${TEST-}" ]; then npm run tests-only ; fi'
+env:
+  - TEST=true
+matrix:
+  fast_finish: true
+  include:
+    - node_js: "6.16"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "6.15"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "6.14"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "6.13"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "6.12"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "6.11"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "6.10"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "6.9"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "6.8"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "6.7"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "6.6"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "6.5"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "6.4"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "6.3"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "6.2"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "6.1"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "6.0"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "4.8"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "4.7"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "4.6"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "4.5"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "4.4"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "4.3"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "4.2"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "4.1"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "4.0"
+      env: TEST=true ALLOW_FAILURE=true
+  allow_failures:
+    - env: TEST=true ALLOW_FAILURE=true

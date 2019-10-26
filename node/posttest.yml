@@ -1,0 +1,10 @@
+language: node_js
+before_install:
+  - 'nvm install-latest-npm'
+script:
+  - 'if [ -n "${POSTTEST-}" ]; then npm run posttest ; fi'
+matrix:
+  fast_finish: true
+  include:
+    - node_js: "lts/*"
+      env: POSTTEST=true

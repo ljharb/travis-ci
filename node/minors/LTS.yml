@@ -1,0 +1,5 @@
+import:
+- source: ./LTS-active.yml
+  mode: deep_merge
+- source: ./LTS-EOL.yml
+  mode: deep_merge

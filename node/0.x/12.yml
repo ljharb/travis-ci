@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+  - "0.12"
+before_install:
+  - 'case "${TRAVIS_NODE_VERSION}" in 0.*) export NPM_CONFIG_STRICT_SSL=false ;; esac'
+  - 'nvm install-latest-npm'
+script:
+  - 'if [ -n "${TEST-}" ]; then npm run tests-only ; fi'
+env:
+  - TEST=true
+matrix:
+  fast_finish: true

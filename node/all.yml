@@ -1,0 +1,5 @@
+import:
+- source: ./minors/all.yml
+  mode: deep_merge
+- source: ./0.x/all.yml
+  mode: deep_merge
