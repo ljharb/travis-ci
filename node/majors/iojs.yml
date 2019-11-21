@@ -12,6 +12,3 @@ env:
   - TEST=true
 matrix:
   fast_finish: true
-  include:
-  allow_failures:
-    - env: TEST=true ALLOW_FAILURE=true
