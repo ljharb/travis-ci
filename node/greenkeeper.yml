@@ -1,5 +1,5 @@
 version: ~> 1.0
 matrix:
   exclude:
-    - if: branch =~ /^greenkeeper\//
+    - if: branch =~ /^greenkeeper\// OR head_branch =~ /^greenkeeper\//
       env: TEST=true ALLOW_FAILURE=true
