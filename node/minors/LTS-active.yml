@@ -3,12 +3,6 @@ node_js:
   - "12.13"
   - "10.17"
   - "8.16"
-before_install:
-  - 'nvm install-latest-npm'
-script:
-  - 'if [ -n "${TEST-}" ]; then npm run tests-only ; fi'
-env:
-  - TEST=true
 matrix:
   fast_finish: true
   include:
@@ -139,5 +133,7 @@ matrix:
   allow_failures:
     - env: TEST=true ALLOW_FAILURE=true
 import:
- - ljharb/travis-ci:node/greenkeeper.yml
- - ljharb/travis-ci:node/dependabot.yml
+  - ljharb/travis-ci:node/latest-npm.yml # ../latest-npm.yml
+  - ljharb/travis-ci:node/tests-only.yml # ../tests-only.yml
+  - ljharb/travis-ci:node/greenkeeper.yml # ../greenkeeper.yml
+  - ljharb/travis-ci:node/dependabot.yml # ../dependabot.yml

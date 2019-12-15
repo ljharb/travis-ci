@@ -3,10 +3,10 @@ node_js:
   - "0.8"
 before_install:
   - 'case "${TRAVIS_NODE_VERSION}" in 0.*) export NPM_CONFIG_STRICT_SSL=false ;; esac'
-  - 'nvm install-latest-npm'
-script:
-  - 'if [ -n "${TEST-}" ]; then npm run tests-only ; fi'
-env:
-  - TEST=true
 matrix:
   fast_finish: true
+import:
+  - ljharb/travis-ci:node/latest-npm.yml # ../latest-npm.yml
+  - ljharb/travis-ci:node/tests-only.yml # ../tests-only.yml
+  - ljharb/travis-ci:node/greenkeeper.yml # ../greenkeeper.yml
+  - ljharb/travis-ci:node/dependabot.yml # ../dependabot.yml

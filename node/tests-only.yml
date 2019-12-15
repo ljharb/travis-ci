@@ -1,0 +1,6 @@
+version: ~> 1.0
+language: node_js
+script:
+  - 'if [ -n "${TEST-}" ]; then npm run tests-only ; fi'
+env:
+  - TEST=true
