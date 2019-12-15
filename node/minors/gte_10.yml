@@ -1,8 +1,4 @@
 language: node_js
-import:
-  - ./gte_12.yml
-  - ljharb/travis-ci:node/greenkeeper.yml
-  - ljharb/travis-ci:node/dependabot.yml
 node_js:
   - "11.15"
   - "10.17"
@@ -81,3 +77,7 @@ matrix:
       env: TEST=true ALLOW_FAILURE=true
   allow_failures:
     - env: TEST=true ALLOW_FAILURE=true
+import:
+  - ./gte_12.yml
+  - ljharb/travis-ci:node/greenkeeper.yml
+  - ljharb/travis-ci:node/dependabot.yml
