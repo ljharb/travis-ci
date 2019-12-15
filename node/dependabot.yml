@@ -1,0 +1,5 @@
+version: ~> 1.0
+matrix:
+  exclude:
+    - if: branch =~ /^dependabot\// OR head_branch =~ /^dependabot\//
+      env: TEST=true ALLOW_FAILURE=true
