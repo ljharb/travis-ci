@@ -1,0 +1,36 @@
+version: ~> 1.0
+language: node_js
+node_js:
+  - "9.11"
+import:
+  - ljharb/travis-ci:node/latest-npm.yml@gte # ../latest-npm.yml
+  - ljharb/travis-ci:node/tests-only.yml@gte # ../tests-only.yml
+  - ljharb/travis-ci:node/greenkeeper.yml # ../greenkeeper.yml
+  - ljharb/travis-ci:node/dependabot.yml # ../dependabot.yml
+matrix:
+  fast_finish: true
+  include:
+    - node_js: "9.10"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "9.9"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "9.8"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "9.7"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "9.6"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "9.5"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "9.4"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "9.3"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "9.2"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "9.1"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "9.0"
+      env: TEST=true ALLOW_FAILURE=true
+  allow_failures:
+    - env: TEST=true ALLOW_FAILURE=true

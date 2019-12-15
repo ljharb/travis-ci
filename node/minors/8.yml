@@ -1,0 +1,48 @@
+version: ~> 1.0
+language: node_js
+node_js:
+  - "8.17"
+import:
+  - ljharb/travis-ci:node/latest-npm.yml@gte # ../latest-npm.yml
+  - ljharb/travis-ci:node/tests-only.yml@gte # ../tests-only.yml
+  - ljharb/travis-ci:node/greenkeeper.yml # ../greenkeeper.yml
+  - ljharb/travis-ci:node/dependabot.yml # ../dependabot.yml
+matrix:
+  fast_finish: true
+  include:
+    - node_js: "8.16"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "8.15"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "8.14"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "8.13"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "8.12"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "8.11"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "8.10"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "8.9"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "8.8"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "8.7"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "8.6"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "8.5"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "8.4"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "8.3"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "8.2"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "8.1"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "8.0"
+      env: TEST=true ALLOW_FAILURE=true
+  allow_failures:
+    - env: TEST=true ALLOW_FAILURE=true

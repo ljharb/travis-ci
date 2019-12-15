@@ -1,12 +1,7 @@
 language: node_js
+import:
+  - ./gte_6.yml
 node_js:
-  - "13"
-  - "12"
-  - "11"
-  - "10"
-  - "7"
-  - "8"
-  - "6"
   - "5"
   - "4"
 sudo: false

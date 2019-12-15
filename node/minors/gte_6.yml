@@ -1,0 +1,4 @@
+import:
+  - ./gte_8.yml
+  - ./7.yml
+  - ./6.yml
