@@ -1,9 +1,7 @@
 language: node_js
-import:
-  - ./gte_6.yml
 node_js:
-  - "5"
-  - "4"
+  - "13"
+  - "12"
 before_install:
   - 'nvm install-latest-npm'
 script:

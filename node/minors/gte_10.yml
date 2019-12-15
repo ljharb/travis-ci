@@ -1,0 +1,83 @@
+language: node_js
+import:
+  - ./gte_12.yml
+  - ljharb/travis-ci:node/greenkeeper.yml
+  - ljharb/travis-ci:node/dependabot.yml
+node_js:
+  - "11.15"
+  - "10.17"
+before_install:
+  - 'nvm install-latest-npm'
+script:
+  - 'if [ -n "${TEST-}" ]; then npm run tests-only ; fi'
+env:
+  - TEST=true
+matrix:
+  fast_finish: true
+  include:
+    - node_js: "11.14"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "11.13"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "11.12"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "11.11"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "11.10"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "11.9"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "11.8"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "11.7"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "11.6"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "11.5"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "11.4"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "11.3"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "11.2"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "11.1"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "11.0"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "10.16"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "10.15"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "10.14"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "10.13"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "10.12"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "10.11"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "10.10"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "10.9"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "10.8"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "10.7"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "10.6"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "10.5"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "10.4"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "10.3"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "10.2"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "10.1"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "10.0"
+      env: TEST=true ALLOW_FAILURE=true
+  allow_failures:
+    - env: TEST=true ALLOW_FAILURE=true
