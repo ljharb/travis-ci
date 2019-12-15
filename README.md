@@ -14,13 +14,31 @@ At the moment this contains these preset dirs for node:
     - `LTS`: the `LTS-active` and `LTS-EOL` configs.
     - `LTS-active`: every LTS version of node whose support status is in "active maintenance"
     - `LTS-EOL`: every LTS version of node whose support status is End of Life
+    - `gte_12`: v12 - v13
+    - `gte_10`: v10 - v13
+    - `gte_8`: v8 - v13
+    - `gte_6`: v6 - v13
     - `gte_4`: v4 - v13
     - `iojs`: io.js, v1 - v3
+    - `13`: v13
+    - `12`: v12
+    - `11`: v11
+    - `10`: v10
+    - `9`: v9
+    - `8`: v8
+    - `7`: v7
+    - `6`: v6
+    - `5`: v5
+    - `4`: v4
  - `majors`: every major version of node.
     - `all`: everything ever released
     - `LTS`: the `LTS-active` and `LTS-EOL` configs.
     - `LTS-active`: every LTS version of node whose support status is in "active maintenance"
     - `LTS-EOL`: every LTS version of node whose support status is End of Life
+    - `gte_12`: v12 - v13
+    - `gte_10`: v10 - v13
+    - `gte_8`: v8 - v13
+    - `gte_6`: v6 - v13
     - `gte_4`: v4 - v13
     - `iojs`: io.js, v1 - v3
  - `0.x`

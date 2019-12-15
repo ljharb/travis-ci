@@ -1,0 +1,19 @@
+language: node_js
+import:
+  - ljharb/travis-ci:node/latest-npm.yml # ../latest-npm.yml
+node_js:
+  - "13"
+  - "12"
+  - "11"
+  - "10"
+  - "9"
+  - "8"
+  - "7"
+  - "6"
+script:
+  - 'if [ -n "${TEST-}" ]; then npm run tests-only ; fi'
+sudo: false
+env:
+  - TEST=true
+matrix:
+  fast_finish: true

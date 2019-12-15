@@ -1,6 +1,6 @@
 language: node_js
-before_install:
-  - 'nvm install-latest-npm'
+import:
+  - ./latest-npm.yml
 script:
   - 'if [ -n "${COVERAGE-}" ]; then npm run coverage ; fi'
 matrix:
