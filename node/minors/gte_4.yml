@@ -1,11 +1,11 @@
 language: node_js
 node_js:
-  - "13.3"
-  - "12.13"
+  - "13.4"
+  - "12.14"
   - "11.15"
-  - "10.17"
+  - "10.18"
   - "9.11"
-  - "8.16"
+  - "8.17"
   - "7.10"
   - "6.17"
   - "5.12"
@@ -19,11 +19,15 @@ env:
 matrix:
   fast_finish: true
   include:
+    - node_js: "13.3"
+      env: TEST=true ALLOW_FAILURE=true
     - node_js: "13.2"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "13.1"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "13.0"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "12.13"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "12.12"
       env: TEST=true ALLOW_FAILURE=true
@@ -81,6 +85,8 @@ matrix:
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "11.0"
       env: TEST=true ALLOW_FAILURE=true
+    - node_js: "10.17"
+      env: TEST=true ALLOW_FAILURE=true
     - node_js: "10.16"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "10.15"
@@ -136,6 +142,8 @@ matrix:
     - node_js: "9.1"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "9.0"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "8.16"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "8.15"
       env: TEST=true ALLOW_FAILURE=true
