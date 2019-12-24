@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "13.4"
+  - "13.5"
   - "12.14"
   - "11.15"
   - "10.18"
@@ -19,6 +19,8 @@ env:
 matrix:
   fast_finish: true
   include:
+    - node_js: "13.4"
+      env: TEST=true ALLOW_FAILURE=true
     - node_js: "13.3"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "13.2"
