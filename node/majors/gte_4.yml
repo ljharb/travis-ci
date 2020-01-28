@@ -10,9 +10,6 @@ node_js:
   - "6"
   - "5"
   - "4"
-sudo: false
-matrix:
-  fast_finish: true
 import:
   - ljharb/travis-ci:node/latest-npm.yml # ../latest-npm.yml
   - ljharb/travis-ci:node/tests-only.yml # ../tests-only.yml

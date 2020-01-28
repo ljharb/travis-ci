@@ -1,13 +1,9 @@
 language: node_js
-import:
-  - ljharb/travis-ci:node/latest-npm.yml # ../latest-npm.yml
 node_js:
   - "13"
   - "12"
-script:
-  - 'if [ -n "${TEST-}" ]; then npm run tests-only ; fi'
-sudo: false
-env:
-  - TEST=true
-matrix:
-  fast_finish: true
+import:
+  - ljharb/travis-ci:node/latest-npm.yml # ../latest-npm.yml
+  - ljharb/travis-ci:node/tests-only.yml # ../tests-only.yml
+  - ljharb/travis-ci:node/greenkeeper.yml # ../greenkeeper.yml
+  - ljharb/travis-ci:node/dependabot.yml # ../dependabot.yml

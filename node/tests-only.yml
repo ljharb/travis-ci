@@ -4,3 +4,5 @@ script:
   - 'if [ -n "${TEST-}" ]; then npm run tests-only ; fi'
 env:
   - TEST=true
+matrix:
+  fast_finish: true
