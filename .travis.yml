@@ -1,0 +1,6 @@
+language: ruby
+before_install:
+  - 'gem install travis'
+script:
+  - 'echo n | travis --help' # remove when `travis` fixes their tty bug
+  - find . -type f -iname '*.yml' -not \( -path './.github/*' \)  -exec sh -c 'for n; do travis lint -x "$n" || exit 1; done' sh {} +

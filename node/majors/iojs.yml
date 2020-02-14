@@ -3,7 +3,6 @@ node_js:
   - "iojs-3"
   - "iojs-2"
   - "iojs-1"
-sudo: false
 matrix:
   fast_finish: true
 import:

@@ -2,7 +2,6 @@ language: node_js
 node_js:
   - "12"
   - "10"
-sudo: false
 import:
   - ljharb/travis-ci:node/latest-npm.yml # ../latest-npm.yml
   - ljharb/travis-ci:node/tests-only.yml # ../tests-only.yml
