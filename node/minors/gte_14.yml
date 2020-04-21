@@ -1,11 +1,5 @@
 import:
   - ./14.yml
-  - ./13.yml
-  - ./12.yml
-  - ./11.yml
-  - ./10.yml
-  - ./9.yml
-  - ./8.yml
   - ljharb/travis-ci:node/latest-npm.yml # ../latest-npm.yml
   - ljharb/travis-ci:node/tests-only.yml # ../tests-only.yml
   - ljharb/travis-ci:node/greenkeeper.yml # ../greenkeeper.yml
