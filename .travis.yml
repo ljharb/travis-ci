@@ -2,4 +2,5 @@ language: ruby
 before_install:
   - 'gem install travis'
 script:
-  - find . -type f -iname '*.yml' -not \( -path './.github/*' \)  -exec sh -c 'for n; do travis lint --skip-completion-check -x "$n" || exit 1; done' sh {} +
+  - travis login --pro --skip-completion-check --auto
+  - find . -type f -iname '*.yml' -not \( -path './.github/*' \) -exec sh -c 'for n; do travis lint --debug --debug-http --skip-completion-check -x "$n" || exit 1; done' sh {} +
