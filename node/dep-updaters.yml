@@ -1,5 +1,14 @@
 version: ~> 1.0
-import:
-  - ljharb/travis-ci:node/greenkeeper.yml # ../greenkeeper.yml
-  - ljharb/travis-ci:node/dependabot.yml # ../dependabot.yml
-  - ljharb/travis-ci:node/renovate.yml # ../renovate.yml
+# these have been inlined instead of imported due to travis' silly import limit
+#import:
+  #- ljharb/travis-ci:node/greenkeeper.yml # ../greenkeeper.yml
+  #- ljharb/travis-ci:node/dependabot.yml # ../dependabot.yml
+  #- ljharb/travis-ci:node/renovate.yml # ../renovate.yml
+matrix:
+  exclude:
+    - if: branch =~ /^renovate\// OR head_branch =~ /^renovate\//
+      env: TEST=true ALLOW_FAILURE=true
+    - if: branch =~ /^greenkeeper[\/-]/ OR head_branch =~ /^greenkeeper[\/-]/
+      env: TEST=true ALLOW_FAILURE=true
+    - if: branch =~ /^dependabot\// OR head_branch =~ /^dependabot\//
+      env: TEST=true ALLOW_FAILURE=true
