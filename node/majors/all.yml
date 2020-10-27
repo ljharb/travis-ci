@@ -1,3 +1,7 @@
 import:
 - ./iojs.yml
 - ./gte_4.yml
+before_install:
+  - 'case "${TRAVIS_NODE_VERSION}" in 5) nvm install --latest-npm 6; export TRAVIS_RESET_NODE_VERSION=1 ;; esac;'
+ after_install:
+  - 'if [ "${TRAVIS_RESET_NODE_VERSION-}" = 1 ]; then nvm use "${TRAVIS_NODE_VERSION}"; export TRAVIS_RESET_NODE_VERSION=0; fi'

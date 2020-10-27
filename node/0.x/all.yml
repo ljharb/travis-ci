@@ -5,8 +5,9 @@ node_js:
   - "0.8"
 before_install:
   - 'case "${TRAVIS_NODE_VERSION}" in 0.*) export NPM_CONFIG_STRICT_SSL=false ;; esac'
-install:
-  - 'if [ "${TRAVIS_NODE_VERSION}" = "0.5" ] || [ "${TRAVIS_NODE_VERSION}" = "0.6" ] || [ "${TRAVIS_NODE_VERSION}" = "0.7" ] || [ "${TRAVIS_NODE_VERSION}" = "0.9" ]; then nvm install --latest-npm 0.8 && npm install && nvm use "${TRAVIS_NODE_VERSION}"; else npm install; fi;'
+  - 'case "${TRAVIS_NODE_VERSION}" in 0.5|0.6|0.7|0.9) nvm install --latest-npm 0.8; export TRAVIS_RESET_NODE_VERSION=1 ;; esac;'
+after_install:
+- 'if [ "${TRAVIS_RESET_NODE_VERSION-}" = 1 ]; then nvm use "${TRAVIS_NODE_VERSION}"; export TRAVIS_RESET_NODE_VERSION=0; fi'
 matrix:
   fast_finish: true
   include:

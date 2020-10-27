@@ -6,6 +6,10 @@ import:
   - ljharb/travis-ci:node/latest-npm.yml # ../latest-npm.yml
   - ljharb/travis-ci:node/tests-only.yml # ../tests-only.yml
   - ljharb/travis-ci:node/dep-updaters.yml # ../dep-updaters.yml
+before_install:
+  - 'case "${TRAVIS_NODE_VERSION}" in 9.0|9.1|9.2) nvm install --latest-npm 9; export TRAVIS_RESET_NODE_VERSION=1 ;; esac;'
+after_install:
+  - 'if [ "${TRAVIS_RESET_NODE_VERSION-}" = 1 ]; then nvm use "${TRAVIS_NODE_VERSION}"; export TRAVIS_RESET_NODE_VERSION=0; fi'
 matrix:
   fast_finish: true
   include:
