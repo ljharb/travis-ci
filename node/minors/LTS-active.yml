@@ -1,6 +1,7 @@
 import:
-  - ./12.yml
-  - ./10.yml
+  - ./14.yml # 14.15+
+  - ./12.yml # 12.13+
+  - ./10.yml # 10.13+
   - ljharb/travis-ci:node/latest-npm.yml # ../latest-npm.yml
   - ljharb/travis-ci:node/tests-only.yml # ../tests-only.yml
   - ljharb/travis-ci:node/dep-updaters.yml # ../dep-updaters.yml
