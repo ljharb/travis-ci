@@ -1,8 +1,8 @@
 language: node_js
 node_js:
-  - "iojs-3"
-  - "iojs-2"
-  - "iojs-1"
+  - iojs-v3
+  - iojs-v2
+  - iojs-v1
 matrix:
   fast_finish: true
 import:

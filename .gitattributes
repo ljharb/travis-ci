@@ -1,0 +1,20 @@
+node/greenkeeper.yml	built linguist-generated=true
+node/dependabot.yml	    built linguist-generated=true
+node/renovate.yml	    built linguist-generated=true
+node/dep-updaters.yml	built linguist-generated=true
+
+node/majors/iojs.yml	built linguist-generated=true
+node/majors/gte_*.yml	built linguist-generated=true
+node/majors/LTS-*.yml	built linguist-generated=true
+
+node/minors/4.yml		built linguist-generated=true
+node/minors/5.yml		built linguist-generated=true
+node/minors/6.yml		built linguist-generated=true
+node/minors/7.yml		built linguist-generated=true
+node/minors/8.yml		built linguist-generated=true
+node/minors/9.yml		built linguist-generated=true
+node/minors/1*.yml		built linguist-generated=true
+node/minors/iojs.yml	built linguist-generated=true
+node/minors/all.yml		built linguist-generated=true
+node/minors/gte_*.yml	built linguist-generated=true
+node/minors/LTS-*.yml	built linguist-generated=true

@@ -1,6 +1,6 @@
 import:
-  - ./14.yml
   - ./15.yml
+  - ./14.yml
   - ljharb/travis-ci:node/latest-npm.yml # ../latest-npm.yml
   - ljharb/travis-ci:node/tests-only.yml # ../tests-only.yml
   - ljharb/travis-ci:node/dep-updaters.yml # ../dep-updaters.yml
