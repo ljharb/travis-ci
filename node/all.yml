@@ -1,3 +1,3 @@
 import:
-- ./minors/all.yml
 - ./0.x/all.yml
+- ./minors/all.yml
