@@ -1,0 +1,22 @@
+name: 'Regenerate version lists'
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+
+jobs:
+    generate:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - uses: dcodeIO/setup-node-nvm@master
+              with:
+                node-version: lts/*
+            - run: |
+                npm install
+                node node/generate.mjs
+                if [ -n "$(git status --porcelain)" ]; then
+                    git config user.name ${{ secrets.USERNAME }}
+                    git config user.email ${{ secrets.EMAIL }}
+                    git commit -am '[node] update version lists from nodejs.org/dist'
+                    git push
+                fi
