@@ -1,7 +1,7 @@
 version: ~> 1.0
 language: node_js
 node_js:
-  - "15.5"
+  - "15.6"
 import:
   - ljharb/travis-ci:node/latest-npm.yml # ../latest-npm.yml
   - ljharb/travis-ci:node/tests-only.yml # ../tests-only.yml
@@ -9,6 +9,8 @@ import:
 matrix:
   fast_finish: true
   include:
+    - node_js: "15.5"
+      env: TEST=true ALLOW_FAILURE=true
     - node_js: "15.4"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "15.3"
