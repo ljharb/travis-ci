@@ -4,7 +4,7 @@ node_js:
   - "15.12"
   - "14.16"
   - "13.14"
-  - "12.21"
+  - "12.22"
   - "11.15"
   - "10.24"
   - "9.11"
@@ -102,6 +102,8 @@ matrix:
     - node_js: "13.1"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "13.0"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "12.21"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "12.20"
       env: TEST=true ALLOW_FAILURE=true
