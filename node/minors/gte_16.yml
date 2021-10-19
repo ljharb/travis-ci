@@ -1,4 +1,5 @@
 import:
+  - ./17.yml
   - ./16.yml
   - ljharb/travis-ci:node/latest-npm.yml # ../latest-npm.yml
   - ljharb/travis-ci:node/tests-only.yml # ../tests-only.yml
