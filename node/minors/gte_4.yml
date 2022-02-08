@@ -2,7 +2,7 @@ version: ~> 1.0
 language: node_js
 node_js:
   - "17.4"
-  - "16.13"
+  - "16.14"
   - "15.14"
   - "14.19"
   - "13.14"
@@ -28,6 +28,8 @@ matrix:
     - node_js: "17.1"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "17.0"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "16.13"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "16.12"
       env: TEST=true ALLOW_FAILURE=true
