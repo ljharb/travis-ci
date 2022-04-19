@@ -1,18 +1,6 @@
 language: node_js
 node_js:
   - "18"
-  - "17"
-  - "16"
-  - "15"
-  - "14"
-  - "13"
-  - "12"
-  - "11"
-  - "10"
-  - "9"
-  - "8"
-  - "7"
-  - "6"
 import:
   - ljharb/travis-ci:node/latest-npm.yml # ../latest-npm.yml
   - ljharb/travis-ci:node/tests-only.yml # ../tests-only.yml
