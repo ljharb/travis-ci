@@ -3,9 +3,9 @@ language: node_js
 node_js:
   - "18.4"
   - "17.9"
-  - "16.15"
+  - "16.16"
   - "15.14"
-  - "14.19"
+  - "14.20"
   - "13.14"
   - "12.22"
   - "11.15"
@@ -47,6 +47,8 @@ matrix:
     - node_js: "17.1"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "17.0"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "16.15"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "16.14"
       env: TEST=true ALLOW_FAILURE=true
@@ -105,6 +107,8 @@ matrix:
     - node_js: "15.1"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "15.0"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "14.19"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "14.18"
       env: TEST=true ALLOW_FAILURE=true
