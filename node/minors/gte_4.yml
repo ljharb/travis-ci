@@ -1,6 +1,7 @@
 version: ~> 1.0
 language: node_js
 node_js:
+  - "19.0"
   - "18.11"
   - "17.9"
   - "16.18"
