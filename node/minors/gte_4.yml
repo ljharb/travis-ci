@@ -1,7 +1,7 @@
 version: ~> 1.0
 language: node_js
 node_js:
-  - "19.1"
+  - "19.2"
   - "18.12"
   - "17.9"
   - "16.18"
@@ -23,6 +23,8 @@ import:
   - ljharb/travis-ci:node/dep-updaters.yml
 matrix:
   include:
+    - node_js: "19.1"
+      env: TEST=true ALLOW_FAILURE=true
     - node_js: "19.0"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "18.11"
