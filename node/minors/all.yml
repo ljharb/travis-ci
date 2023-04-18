@@ -14,4 +14,6 @@ import:
   - ./15.yml
   - ./16.yml
   - ./17.yml
-  - ./gte_18.yml
+  - ./18.yml
+  - ./19.yml
+  - ./gte_20.yml
