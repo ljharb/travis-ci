@@ -12,6 +12,6 @@
 		"yaml": "^1.10.2"
 	},
 	"dependencies": {
-		"string.prototype.replaceall": "^1.0.7"
+		"string.prototype.replaceall": "^1.0.8"
 	}
 }
