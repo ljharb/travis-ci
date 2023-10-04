@@ -1,0 +1,17 @@
+{
+	"root": true,
+
+	"extends": "@ljharb/eslint-config/node/latest",
+
+	"rules": {
+		"camelcase": "off",
+		"func-style": "off",
+		"id-length": "off",
+		"max-len": "off",
+		"max-params": "off",
+		"no-inner-declarations": "warn",
+		"no-template-curly-in-string": "warn",
+		"prefer-named-capture-group": "warn",
+		"sort-keys": "off",
+	},
+}

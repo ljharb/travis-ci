@@ -23,7 +23,7 @@ function stringify(obj) {
 }
 
 function commentSpecificFileRows(rows, start, count, commentWholeLine) {
-	return rows.slice(start, start + 1 + count).map(x => {
+	return rows.slice(start, start + 1 + count).map((x) => {
 		const altFilename = x.match(/([^.\s/]+\.yml)$/);
 		return `${commentWholeLine ? x.replace(/^(\s*)(\S)/, '$1#$2') : x}${altFilename ? ` # ../${altFilename[1]}` : ''}`;
 	});
@@ -47,11 +47,16 @@ function commentFileRows(ymlObject, start, count, commentWholeLine) {
 		...matrix,
 		exclude: [],
 	};
-	const services = ['renovate', 'greenkeeper', 'dependabot'];
+	const services = [
+		'renovate',
+		'greenkeeper',
+		'dependabot',
+	];
 	for (const svc of services) {
 		const yml = parse(updaterTemplate.replaceAll('${service}', svc));
 		updatersYml.matrix.exclude.push(...yml.matrix.exclude);
-		updatersYml.import.push(`ljharb/travis-ci:node/${svc}.yml`)
+		updatersYml.import.push(`ljharb/travis-ci:node/${svc}.yml`);
+		// eslint-disable-next-line no-await-in-loop
 		await fs.writeFile(path.join(dir, `${svc}.yml`), yaml.stringify(yml, {
 			keepCstNodes: true,
 		}));
@@ -78,7 +83,7 @@ async function getNodeVersions(type = 'nodejs') {
 }
 
 function getMinorsByMajor(versions) {
-	const minorEntries = versions.map(v => [`${semverMajor(v)}`, `${semverMajor(v)}.${semverMinor(v)}`]);
+	const minorEntries = versions.map((v) => [`${semverMajor(v)}`, `${semverMajor(v)}.${semverMinor(v)}`]);
 	const minorsByMajor = {};
 	minorEntries.forEach(([maj, v]) => {
 		minorsByMajor[maj] = Array.from(new Set([].concat(minorsByMajor[maj] || [], v)));
@@ -104,13 +109,13 @@ function sortByOriginalKeys([a], [b]) {
 
 	const iojsMajors = [];
 
-	Object.entries(minorsByMajor).reverse().forEach(([major, minors]) => {
+	Object.entries(minorsByMajor).reverse().forEach(([, minors]) => {
 		const [first, ...rest] = minors;
 		iojsMinorYml.node_js.push(`iojs-v${first}`);
 		iojsMajors.push(`iojs-v${semverMajor(`${first}.0`)}`);
 
 		iojsMinorYml.matrix.include.push(...rest.map((minor) => {
-			const { node_js: _, ...minorRest } = originalInclude;
+			const { node_js: _, ...minorRest } = originalInclude; // eslint-disable-line no-unused-vars
 			return {
 				node_js: `iojs-v${minor}`,
 				...minorRest,
@@ -119,8 +124,8 @@ function sortByOriginalKeys([a], [b]) {
 
 	});
 
-	delete iojsMinorYml['before_install'];
-	delete iojsMinorYml['after_install'];
+	delete iojsMinorYml.before_install;
+	delete iojsMinorYml.after_install;
 
 	const majorCount = Object.keys(minorsByMajor).length;
 
@@ -144,19 +149,19 @@ function sortByOriginalKeys([a], [b]) {
 	const { versions, index } = await getNodeVersions();
 
 	// LTS
-	const ltsMinors = index.filter(x => x.lts).map(({ version: v, lts }) => [lts, `${semverMajor(v)}.${semverMinor(v)}`]);
+	const ltsMinors = index.filter((x) => x.lts).map(({ version: v, lts }) => [lts, `${semverMajor(v)}.${semverMinor(v)}`]);
 	const ltsLatestMinors = {};
 	ltsMinors.forEach(([lts, v]) => {
 		ltsLatestMinors[lts] = Array.from(new Set([].concat(
 			ltsLatestMinors[lts] || [],
-			v
+			v,
 		).sort((a, b) => semverCompare(`${b}.0`, `${a}.0`))));
 	});
 	const ltsMinorsWithStarting = Object.values(ltsLatestMinors).map(([latest, ...rest]) => [latest, rest[rest.length - 1] || latest]);
 
 	const OLDEST_ACTIVE_LTS = 10;
 	[true, false].forEach((isActive) => {
-		const filteredLTSMinors = ltsMinorsWithStarting.filter(([x]) => isActive ? x >= OLDEST_ACTIVE_LTS : x < OLDEST_ACTIVE_LTS);
+		const filteredLTSMinors = ltsMinorsWithStarting.filter(([x]) => (isActive ? x >= OLDEST_ACTIVE_LTS : x < OLDEST_ACTIVE_LTS));
 		const ltsMinorYml = {
 			import: filteredLTSMinors.map(([x]) => `./${semverMajor(`${x}.0`)}.yml`).concat(minorYml.import),
 		};
@@ -173,7 +178,7 @@ function sortByOriginalKeys([a], [b]) {
 		if (isActive) {
 			const regex = /(\d+)(\.yml)?$/gm;
 			function replacer(_, major, ext = '') {
-				const firstVersion = filteredLTSMinors.map(([, first]) => first).find(f => String(semverMajor(`${f}.0`)) === major);
+				const firstVersion = filteredLTSMinors.map(([, first]) => first).find((f) => String(semverMajor(`${f}.0`)) === major);
 				return `${major}${ext} # ${firstVersion}+`;
 			}
 			ltsMinorContents = ltsMinorContents.replaceAll(regex, replacer);
@@ -183,13 +188,13 @@ function sortByOriginalKeys([a], [b]) {
 		fs.writeFile(path.join(dir, 'majors', `LTS-${isActive ? 'active' : 'EOL'}.yml`), ltsMajorContents);
 	});
 
-	const majors = Array.from(new Set(versions.map(v => semverMajor(v)).filter(Boolean).map(String)));
+	const majors = Array.from(new Set(versions.map((v) => semverMajor(v)).filter(Boolean).map(String)));
 
 	// GTEs
-	majors.filter(x => x % 2 === 0).forEach((x) => {
-		const gteMajors = majors.slice(0, majors.findIndex(y => y === x) + 1);
+	majors.filter((x) => x % 2 === 0).forEach((x) => {
+		const gteMajors = majors.slice(0, majors.findIndex((y) => y === x) + 1);
 		const gteMinorYml = {
-			import: gteMajors.map((m) => `./${m}.yml`).concat(minorYml.import)
+			import: gteMajors.map((m) => `./${m}.yml`).concat(minorYml.import),
 		};
 		const gteMinorContents = commentFileRows(gteMinorYml, gteMajors.length + 1, minorYml.import.length, false);
 		fs.writeFile(path.join(dir, 'minors', `gte_${x}.yml`), gteMinorContents);
@@ -204,15 +209,13 @@ function sortByOriginalKeys([a], [b]) {
 	});
 
 	// all
-	const lastEven = majors.find(x => x % 2 === 0);
-	const lastGTEMajors = majors.slice(0, majors.findIndex(x => x === lastEven) + 1);
+	const lastEven = majors.find((x) => x % 2 === 0);
+	const lastGTEMajors = majors.slice(0, majors.findIndex((x) => x === lastEven) + 1);
 	const allMinorContents = stringify({
-		import: [
-			'iojs',
-		].concat(
-			majors.filter(x => !lastGTEMajors.includes(x)).reverse(),
+		import: ['iojs'].concat(
+			majors.filter((x) => !lastGTEMajors.includes(x)).reverse(),
 			`gte_${lastEven}`,
-		).map(x => `./${x}.yml`),
+		).map((x) => `./${x}.yml`),
 	});
 	await fs.writeFile(path.join(dir, 'minors', 'all.yml'), allMinorContents);
 
@@ -220,11 +223,11 @@ function sortByOriginalKeys([a], [b]) {
 	const minorsByMajor = getMinorsByMajor(versions);
 	const minorYmls = Object.entries(minorsByMajor).filter(([major]) => major >= 4).map(([major, minors]) => {
 		const [first, ...rest] = minors;
-		const minorYml = parse(minorTemplate);
-		minorYml.node_js = [first];
+		const minorByMajorYml = parse(minorTemplate);
+		minorByMajorYml.node_js = [first];
 
-		minorYml.matrix.include = rest.map((minor) => {
-			const { node_js: _, ...minorRest } = originalInclude;
+		minorByMajorYml.matrix.include = rest.map((minor) => {
+			const { node_js: _, ...minorRest } = originalInclude; // eslint-disable-line no-unused-vars
 			return {
 				node_js: minor,
 				...minorRest,
@@ -232,38 +235,39 @@ function sortByOriginalKeys([a], [b]) {
 		});
 
 		if (major === '5') {
-			minorYml['before_install'] = ['case "${TRAVIS_NODE_VERSION}" in 5.*) nvm install --latest-npm 6; export TRAVIS_RESET_NODE_VERSION=1 ;; esac;'];
-			minorYml['after_install'] = ['if [ "${TRAVIS_RESET_NODE_VERSION-}" = 1 ]; then nvm use "${TRAVIS_NODE_VERSION}"; export TRAVIS_RESET_NODE_VERSION=0; fi'];
+			minorByMajorYml.before_install = ['case "${TRAVIS_NODE_VERSION}" in 5.*) nvm install --latest-npm 6; export TRAVIS_RESET_NODE_VERSION=1 ;; esac;'];
+			minorByMajorYml.after_install = ['if [ "${TRAVIS_RESET_NODE_VERSION-}" = 1 ]; then nvm use "${TRAVIS_NODE_VERSION}"; export TRAVIS_RESET_NODE_VERSION=0; fi'];
 		} else if (major === '6') {
-			minorYml['before_install'] = ['case "${TRAVIS_NODE_VERSION}" in 6.1|6.2) nvm install --latest-npm 6; export TRAVIS_RESET_NODE_VERSION=1 ;; esac;'];
-			minorYml['after_install'] = ['if [ "${TRAVIS_RESET_NODE_VERSION-}" = 1 ]; then nvm use "${TRAVIS_NODE_VERSION}"; export TRAVIS_RESET_NODE_VERSION=0; fi'];
+			minorByMajorYml.before_install = ['case "${TRAVIS_NODE_VERSION}" in 6.1|6.2) nvm install --latest-npm 6; export TRAVIS_RESET_NODE_VERSION=1 ;; esac;'];
+			minorByMajorYml.after_install = ['if [ "${TRAVIS_RESET_NODE_VERSION-}" = 1 ]; then nvm use "${TRAVIS_NODE_VERSION}"; export TRAVIS_RESET_NODE_VERSION=0; fi'];
 		} else if (major === '9') {
-			minorYml['before_install'] = ['case "${TRAVIS_NODE_VERSION}" in 9.0|9.1|9.2) nvm install --latest-npm 9; export TRAVIS_RESET_NODE_VERSION=1 ;; esac;'];
-			minorYml['after_install'] = ['if [ "${TRAVIS_RESET_NODE_VERSION-}" = 1 ]; then nvm use "${TRAVIS_NODE_VERSION}"; export TRAVIS_RESET_NODE_VERSION=0; fi'];
+			minorByMajorYml.before_install = ['case "${TRAVIS_NODE_VERSION}" in 9.0|9.1|9.2) nvm install --latest-npm 9; export TRAVIS_RESET_NODE_VERSION=1 ;; esac;'];
+			minorByMajorYml.after_install = ['if [ "${TRAVIS_RESET_NODE_VERSION-}" = 1 ]; then nvm use "${TRAVIS_NODE_VERSION}"; export TRAVIS_RESET_NODE_VERSION=0; fi'];
 		} else {
-			delete minorYml['before_install'];
-			delete minorYml['after_install'];
+			delete minorByMajorYml.before_install;
+			delete minorByMajorYml.after_install;
 		}
-		const newMinorYml = Object.fromEntries(Object.entries(minorYml).sort(sortByOriginalKeys));
-		const newMinorContents = commentFileRows(newMinorYml, 5, minorYml.import.length, false);
+		const newMinorYml = Object.fromEntries(Object.entries(minorByMajorYml).sort(sortByOriginalKeys));
+		const newMinorContents = commentFileRows(newMinorYml, 5, minorByMajorYml.import.length, false);
 		fs.writeFile(path.join(dir, 'minors', `${major}.yml`), newMinorContents);
 		return newMinorYml;
 	});
-	const allMinorYmls = minorYmls.reduceRight((prev, yml) => {
-		return {
-			...prev,
-			...yml,
-			node_js: [].concat(prev.node_js || [], yml.node_js || []),
-			import: [...new Set([].concat(prev.import || [], yml.import || []))],
-			before_install: [...new Set([].concat(prev.before_install || [], yml.before_install || []))],
-			after_install: [...new Set([].concat(prev.after_install || [], yml.after_install || []))],
-			matrix: {
-				...prev.matrix,
-				include: [].concat(prev?.matrix?.include || [], yml.matrix.include || []),
-				allow_failures: [...new Set([].concat(prev?.matrix?.allow_failures || [], yml.matrix.allow_failures).map(x => JSON.stringify(x)))].map(x => JSON.parse(x)),
-			},
-		};
-	}, {});
+	const allMinorYmls = minorYmls.reduceRight((prev, yml) => ({
+		...prev,
+		...yml,
+		node_js: [].concat(prev.node_js || [], yml.node_js || []),
+		import: [...new Set([].concat(prev.import || [], yml.import || []))],
+		before_install: [...new Set([].concat(prev.before_install || [], yml.before_install || []))],
+		after_install: [...new Set([].concat(prev.after_install || [], yml.after_install || []))],
+		matrix: {
+			...prev.matrix,
+			include: [].concat(prev?.matrix?.include || [], yml.matrix.include || []),
+			allow_failures: Array.from(
+				new Set([].concat(prev?.matrix?.allow_failures || [], yml.matrix.allow_failures).map((x) => JSON.stringify(x))),
+				(x) => JSON.parse(x),
+			),
+		},
+	}), {});
 	const gte4MinorContents = commentFileRows(allMinorYmls, 5, minorYml.import.length, false);
-	fs.writeFile(path.join(dir, 'minors', `gte_4.yml`), gte4MinorContents);
+	fs.writeFile(path.join(dir, 'minors', 'gte_4.yml'), gte4MinorContents);
 }

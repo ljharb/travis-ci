@@ -1,12 +1,15 @@
 {
 	"private": true,
 	"scripts": {
+		"lint": "eslint --ext=js,mjs .",
 		"postinstall": "npm run build",
 		"prebuild": "git ls-files | xargs git check-attr built | grep -v 'unspecified$' | cut -d: -f1 | xargs rm || true",
 		"build": "node node/generate.mjs",
 		"postbuild": "git add node/*/*.yml && git ls-files | xargs git check-attr built | grep -v 'unspecified$' | cut -d: -f1 | xargs git add"
 	},
 	"devDependencies": {
+		"@ljharb/eslint-config": "^21.1.0",
+		"eslint": "^8.8.0",
 		"get-json": "^1.0.1",
 		"semver": "^7.5.4",
 		"yaml": "^1.10.2"
