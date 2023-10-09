@@ -74,6 +74,7 @@ function commentFileRows(ymlObject, start, count, commentWholeLine) {
 async function getNodeVersions(type = 'nodejs') {
 	const index = await getJSON(`https://${type}.org/dist/index.json`).catch((e) => {
 		console.error('Error fetching and parsing JSON from `https://nodejs.org/dist/index.json`');
+		console.error(e.message);
 		throw e;
 	});
 	return {
