@@ -12,10 +12,10 @@ jobs:
               with:
                 node-version: lts/*
             - run: |
-                node node/generate.mjs
+                npm run dist
                 if [ -n "$(git status --porcelain)" ]; then
                     git config user.name ${{ secrets.USERNAME }}
                     git config user.email ${{ secrets.EMAIL }}
-                    git commit -am '[node] update version lists from nodejs.org/dist'
+                    git commit -am '[node] update version lists'
                     git push
                 fi
