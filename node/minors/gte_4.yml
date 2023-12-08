@@ -1,10 +1,10 @@
 version: ~> 1.0
 language: node_js
 node_js:
-  - "21.1"
-  - "20.9"
+  - "21.4"
+  - "20.10"
   - "19.9"
-  - "18.18"
+  - "18.19"
   - "17.9"
   - "16.20"
   - "15.14"
@@ -25,7 +25,15 @@ import:
   - ljharb/travis-ci:node/dep-updaters.yml
 matrix:
   include:
+    - node_js: "21.3"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "21.2"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "21.1"
+      env: TEST=true ALLOW_FAILURE=true
     - node_js: "21.0"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "20.9"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "20.8"
       env: TEST=true ALLOW_FAILURE=true
@@ -62,6 +70,8 @@ matrix:
     - node_js: "19.1"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "19.0"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "18.18"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "18.17"
       env: TEST=true ALLOW_FAILURE=true
