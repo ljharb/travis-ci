@@ -1,9 +1,7 @@
+language: node_js
+node_js:
+  - "22"
 import:
-  - ./22.yml
-  - ./21.yml
-  - ./20.yml
-  - ./19.yml
-  - ./18.yml
   - ljharb/travis-ci:node/latest-npm.yml # ../latest-npm.yml
   - ljharb/travis-ci:node/tests-only.yml # ../tests-only.yml
   - ljharb/travis-ci:node/dep-updaters.yml # ../dep-updaters.yml
