@@ -1,7 +1,7 @@
 version: ~> 1.0
 language: node_js
 node_js:
-  - "23.0"
+  - "23.1"
 import:
   - ljharb/travis-ci:node/latest-npm.yml # ../latest-npm.yml
   - ljharb/travis-ci:node/tests-only.yml # ../tests-only.yml
@@ -9,5 +9,7 @@ import:
 matrix:
   fast_finish: true
   include:
+    - node_js: "23.0"
+      env: TEST=true ALLOW_FAILURE=true
   allow_failures:
     - env: TEST=true ALLOW_FAILURE=true
