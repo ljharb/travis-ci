@@ -2,7 +2,7 @@ version: ~> 1.0
 language: node_js
 node_js:
   - "23.1"
-  - "22.10"
+  - "22.11"
   - "21.7"
   - "20.18"
   - "19.9"
@@ -28,6 +28,8 @@ import:
 matrix:
   include:
     - node_js: "23.0"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "22.10"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "22.9"
       env: TEST=true ALLOW_FAILURE=true
