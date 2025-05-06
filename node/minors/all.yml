@@ -18,4 +18,6 @@ import:
   - ./19.yml
   - ./20.yml
   - ./21.yml
-  - ./gte_22.yml
+  - ./22.yml
+  - ./23.yml
+  - ./gte_24.yml
