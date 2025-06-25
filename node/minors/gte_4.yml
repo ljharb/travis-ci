@@ -3,7 +3,7 @@ language: node_js
 node_js:
   - "24.3"
   - "23.11"
-  - "22.16"
+  - "22.17"
   - "21.7"
   - "20.19"
   - "19.9"
@@ -55,6 +55,8 @@ matrix:
     - node_js: "23.1"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "23.0"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "22.16"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "22.15"
       env: TEST=true ALLOW_FAILURE=true
