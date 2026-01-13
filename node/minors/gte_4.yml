@@ -1,12 +1,12 @@
 version: ~> 1.0
 language: node_js
 node_js:
-  - "25.2"
-  - "24.12"
+  - "25.3"
+  - "24.13"
   - "23.11"
-  - "22.21"
+  - "22.22"
   - "21.7"
-  - "20.19"
+  - "20.20"
   - "19.9"
   - "18.20"
   - "17.9"
@@ -29,9 +29,13 @@ import:
   - ljharb/travis-ci:node/dep-updaters.yml
 matrix:
   include:
+    - node_js: "25.2"
+      env: TEST=true ALLOW_FAILURE=true
     - node_js: "25.1"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "25.0"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "24.12"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "24.11"
       env: TEST=true ALLOW_FAILURE=true
@@ -78,6 +82,8 @@ matrix:
     - node_js: "23.1"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "23.0"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "22.21"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "22.20"
       env: TEST=true ALLOW_FAILURE=true
@@ -134,6 +140,8 @@ matrix:
     - node_js: "21.1"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "21.0"
+      env: TEST=true ALLOW_FAILURE=true
+    - node_js: "20.19"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "20.18"
       env: TEST=true ALLOW_FAILURE=true
