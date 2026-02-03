@@ -1,7 +1,7 @@
 version: ~> 1.0
 language: node_js
 node_js:
-  - "25.5"
+  - "25.6"
   - "24.13"
   - "23.11"
   - "22.22"
@@ -29,6 +29,8 @@ import:
   - ljharb/travis-ci:node/dep-updaters.yml
 matrix:
   include:
+    - node_js: "25.5"
+      env: TEST=true ALLOW_FAILURE=true
     - node_js: "25.4"
       env: TEST=true ALLOW_FAILURE=true
     - node_js: "25.3"
