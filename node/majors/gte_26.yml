@@ -1,14 +1,6 @@
 language: node_js
 node_js:
   - "26"
-  - "25"
-  - "24"
-  - "23"
-  - "22"
-  - "21"
-  - "20"
-  - "19"
-  - "18"
 import:
   - ljharb/travis-ci:node/latest-npm.yml # ../latest-npm.yml
   - ljharb/travis-ci:node/tests-only.yml # ../tests-only.yml

@@ -1,4 +1,5 @@
 import:
+  - ./26.yml
   - ./25.yml
   - ./24.yml
   - ./23.yml
